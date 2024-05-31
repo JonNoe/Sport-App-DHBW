@@ -5,4 +5,12 @@
     <color name="red_DHBW">#DF031D</color>
     <color name="grey_DHBW">#7E898D</color>
     <color name="whitecream">#F2ECF6</color>
+
+    <color name="mainBG">#1B023B</color>
+    <color name="secButtons">#FF03DAC5</color>
+
+    <color name="night_mode">#6124B1</color>
+    <color name="notifications">#13B2C3</color>
+    <color name="fill1">#E6A326</color>
+    <color name="fill2">#D95F69</color>
 </resources>

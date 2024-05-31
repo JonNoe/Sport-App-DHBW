@@ -6,4 +6,30 @@
     </style>
 
     <style name="Theme.DHBWSportApp" parent="Base.Theme.DHBWSportApp" />
+
+
+    <!--Switch Styles-->
+    <style name="nightModeSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/night_mode</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
+    <style name="notificationsSwitch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/notifications</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
+    <style name="fill1Switch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/fill1</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
+
+    <style name="fill2Switch" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">@color/fill2</item>
+        <item name="colorSwitchThumbNormal">#FFFFFF</item>
+        <item name="android:colorForeground">#99FFFFFF</item>
+    </style>
 </resources>
