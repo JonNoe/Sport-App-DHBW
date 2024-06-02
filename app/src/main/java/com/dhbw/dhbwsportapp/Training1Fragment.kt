@@ -9,24 +9,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-
-class TrainingFragment : Fragment(), OnItemClickListener {
-
-    //TrainingList
-    private lateinit var recyclerView: RecyclerView
+class Training1Fragment : Fragment(), OnItemClickListener {
+    private lateinit var recyclerViewTraining1Fragment: RecyclerView
     private lateinit var dataList: ArrayList<TrainingDataClass>
     private lateinit var imageList: Array<Int>
     private lateinit var titleList: Array<String>
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_training, container, false)
-
-        recyclerView = view.findViewById(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val view = inflater.inflate(R.layout.fragment_training1, container, false)
+        recyclerViewTraining1Fragment = view.findViewById(R.id.recycler_view_T1)
+        recyclerViewTraining1Fragment.layoutManager = LinearLayoutManager(requireContext())
 
         imageList = arrayOf(
             R.drawable.baseline_co_present_24,
@@ -45,43 +39,27 @@ class TrainingFragment : Fragment(), OnItemClickListener {
             "Arm-Übungen"
         )
 
-
-
         dataList = ArrayList()
         getData()
 
         val adapter = TrainingAdapterClass(dataList, this)
-        recyclerView.adapter = adapter
+        recyclerViewTraining1Fragment.adapter = adapter
 
         return view
     }
+
     private fun getData(){
         for (i in imageList.indices){
             val dataClass = TrainingDataClass(imageList[i], titleList[i])
             dataList.add(dataClass)
         }
-        recyclerView.adapter = TrainingAdapterClass(dataList, this)
+        recyclerViewTraining1Fragment.adapter = TrainingAdapterClass(dataList, this)
     }
 
     override fun onItemClick(position: Int){
-        val fragment: Fragment = when (position){
-            0 -> Training1Fragment()
-
-        else -> throw IllegalArgumentException("Invalid positioning")
-        }
-
-        val intent = Intent(requireContext(), TrainingActivity::class.java)
-        intent.putExtra("fragment_to_open", fragment.javaClass.simpleName)
-        startActivity(intent)
-
-        /*
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.frame_container, fragment)
-            .addToBackStack(null)
-            .commit()
-        */
+        val explicitIntent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(explicitIntent)
     }
-
 
 
 }

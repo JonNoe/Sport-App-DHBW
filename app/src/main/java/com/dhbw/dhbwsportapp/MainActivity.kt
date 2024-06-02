@@ -2,6 +2,7 @@ package com.dhbw.dhbwsportapp
 
 import android.os.Bundle
 import android.view.View
+import android.widget.FrameLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,14 +17,16 @@ import androidx.appcompat.app.AppCompatDelegate
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var frameContainer: FrameLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-
         setContentView(R.layout.activity_main)
 
+
+        //frag container
+        frameContainer = findViewById(R.id.frame_container)
 
         //Setup -Wischen Navigation
         val viewPager = findViewById<ViewPager>(R.id.viewPager)

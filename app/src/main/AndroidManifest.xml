@@ -16,13 +16,8 @@
             android:name=".Training2Activity"
             android:exported="false" />
         <activity
-            android:name=".Training1Activity"
+            android:name=".TrainingActivity"
             android:exported="false" />
-        <activity
-            android:name=".WorkoutDetailActivity"
-            android:exported="false"
-            android:label="@string/title_activity_workout_detail"
-            android:theme="@style/Theme.DHBWSportApp" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

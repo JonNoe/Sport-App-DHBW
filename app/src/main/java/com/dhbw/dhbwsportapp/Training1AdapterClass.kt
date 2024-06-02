@@ -7,13 +7,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class TrainingAdapterClass(
-    private val dataList: ArrayList<TrainingDataClass>,
+class Training1AdapterClass(
+    private val dataList: ArrayList<Training1DataClass>,
     private val itemClickListener: OnItemClickListener
-    ): RecyclerView.Adapter<TrainingAdapterClass.ViewHolderClass>() {
+    ): RecyclerView.Adapter<Training1AdapterClass.ViewHolderClass>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderClass {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_layout_t1, parent, false)
         return ViewHolderClass(itemView, itemClickListener)
     }
 

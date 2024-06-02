@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ProfileFragment"
-    android:background="@color/mainBG"
     >
 
     <ScrollView
@@ -14,13 +13,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="?attr/actionBarSize">
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="20dp"
                 android:src="@drawable/baseline_account_circle_24"/>
                 
             <TextView

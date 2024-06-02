@@ -3,16 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TrainingFragment"
-    android:layout_marginTop="?attr/actionBarSize"
-    >
-
+    tools:context=".Training1Fragment"
+    android:layout_marginTop="?attr/actionBarSize">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_view_T1"
         android:layout_marginTop="50dp"
         android:paddingTop="20dp"
         />
