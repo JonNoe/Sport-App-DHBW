@@ -30,7 +30,7 @@ class TrainingFragment : Fragment(), OnItemClickListener {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         imageList = arrayOf(
-            R.drawable.dumbell_24,
+            R.drawable.baseline_co_present_24,
             R.drawable.ic_home_black_24dp,
             R.drawable.baseline_community_24,
             R.drawable.baseline_account_circle_24,

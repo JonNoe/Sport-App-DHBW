@@ -6,6 +6,15 @@
     <color name="grey_DHBW">#7E898D</color>
     <color name="whitecream">#F2ECF6</color>
 
+
+    <color name="red_DHBW_app">#A52632</color>
+    <color name="grey_DHBW_app">#303030</color>
+    <color name="lightgrey_DHBW_app">#444444</color>
+
+
+
+
+
     <color name="mainBG">#1B023B</color>
     <color name="secButtons">#FF03DAC5</color>
 
