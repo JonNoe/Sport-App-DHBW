@@ -1,3 +1,5 @@
+package com.dhbw.dhbwsportapp
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -5,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.AppCompatTextView
-import com.dhbw.dhbwsportapp.R
 
 class Profile_Settings : Fragment() {
 
