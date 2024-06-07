@@ -17,4 +17,14 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_workout_detail">WorkoutDetailActivity</string>
+
+
+    <!-- Gender options -->
+    <string-array name="gender_array">
+        <item>Geschlecht</item>
+        <item>Männlich</item>
+        <item>Weiblich</item>
+        <item>Divers</item>
+    </string-array>
+
 </resources>

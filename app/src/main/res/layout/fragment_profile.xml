@@ -16,25 +16,32 @@
             android:orientation="vertical"
             android:paddingTop="?attr/actionBarSize">
 
-            <ImageView
+            <ImageButton
+                android:id="@+id/profile_image_button"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/baseline_account_circle_24"/>
-                
-            <TextView
-                android:layout_width="wrap_content"
+                android:src="@drawable/baseline_account_circle_24"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/Profile_Name"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Profile Name"
+                android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="22sp"
                 android:textStyle="bold"
+                android:background="@color/mainBG"
                 />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/Edit_Profile"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
@@ -78,7 +85,7 @@
                         android:textStyle="bold"
                         android:layout_toEndOf="@+id/nightModeIcon"
                         />
-                    
+
                     <androidx.appcompat.widget.SwitchCompat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -87,7 +94,7 @@
                         android:switchMinWidth="50dp"
                         android:theme="@style/nightModeSwitch"
                         />
-                    
+
                 </RelativeLayout>
                 <!--Notification -->
                 <RelativeLayout
