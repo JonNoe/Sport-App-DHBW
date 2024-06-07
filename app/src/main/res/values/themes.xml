@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.DHBWSportApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorButtonNormal">@color/red_DHBW_app</item>
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->#
 
@@ -22,6 +23,8 @@
         <item name="colorSwitchThumbNormal">#FFFFFF</item>
         <item name="android:colorForeground">#99FFFFFF</item>
     </style>
+
+
 
     <style name="fill1Switch" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">@color/fill1</item>

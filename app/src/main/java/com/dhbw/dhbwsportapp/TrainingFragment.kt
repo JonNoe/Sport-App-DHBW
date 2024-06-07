@@ -37,7 +37,7 @@ class TrainingFragment : Fragment(), OnItemClickListener {
             R.drawable.ic_launcher_foreground
         )
         titleList = arrayOf(
-            "HIT-Training",
+            "HIIT-Workout",
             "Bauchmuskel-Training",
             "Dehnungen für die Pause",
             "Ganzkörperworkout",

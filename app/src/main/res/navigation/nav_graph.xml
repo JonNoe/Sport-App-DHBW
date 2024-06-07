@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/training1Fragment">
+
+    <fragment
+        android:id="@+id/training1Fragment"
+        android:name="com.dhbw.dhbwsportapp.Training1Fragment"
+        android:label="Training1Fragment"
+        tools:layout="@layout/fragment_training1">
+        <action
+            android:id="@+id/action_training1Fragment_to_trainingStartFragment"
+            app:destination="@id/trainingStartFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/trainingStartFragment"
+        android:name="com.dhbw.dhbwsportapp.TrainingStartFragment"
+        android:label="TrainingStartFragment"
+        tools:layout="@layout/fragment_training_start" />
+
+</navigation>

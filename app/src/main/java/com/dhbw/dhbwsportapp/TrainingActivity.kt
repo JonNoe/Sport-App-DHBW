@@ -2,6 +2,7 @@ package com.dhbw.dhbwsportapp
 
 import android.os.Bundle
 import android.widget.FrameLayout
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 class TrainingActivity : AppCompatActivity() {
@@ -17,6 +18,12 @@ class TrainingActivity : AppCompatActivity() {
                 .replace(R.id.fragment_container_trainings, Training1Fragment())
                 .addToBackStack(null)
                 .commit()
+        }
+
+        //back arrow
+        val backArrowButton: ImageButton = findViewById(R.id.back_Arrow_Training)
+        backArrowButton.setOnClickListener{
+            finish()
         }
     }
 }
