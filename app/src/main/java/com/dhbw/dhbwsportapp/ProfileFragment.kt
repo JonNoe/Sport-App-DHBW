@@ -135,7 +135,5 @@ class ProfileFragment : Fragment() {
     private fun navigateToProfileSettings() {
         val intent = Intent(requireContext(), ProfileActivity::class.java)
         startActivity(intent)
-
-
     }
 }
