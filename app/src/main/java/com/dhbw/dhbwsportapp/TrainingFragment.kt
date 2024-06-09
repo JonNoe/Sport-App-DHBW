@@ -38,13 +38,12 @@ class TrainingFragment : Fragment(), OnItemClickListener {
         )
         titleList = arrayOf(
             "HIIT-Workout",
-            "Bauchmuskel-Training",
+            "Ganzkörperworkout",
             "Dehnungen für die Pause",
             "Ganzkörperworkout",
             "Spagat-Übungen",
             "Arm-Übungen"
         )
-
 
 
         dataList = ArrayList()
@@ -64,17 +63,15 @@ class TrainingFragment : Fragment(), OnItemClickListener {
     }
 
     override fun onItemClick(position: Int){
-        val fragment: Fragment = when (position){
-            0 -> Training1Fragment()
+        val fragmentClassName: String = when (position){
+            0 -> Training1Fragment::class.java.name
+            1 -> TrainingFragment_2::class.java.name
 
         else -> throw IllegalArgumentException("Invalid positioning")
         }
 
         val intent = Intent(requireContext(), TrainingActivity::class.java)
-        intent.putExtra("fragment_to_open", fragment.javaClass.simpleName)
+        intent.putExtra("fragment_to_open", fragmentClassName)
         startActivity(intent)
     }
-
-
-
 }

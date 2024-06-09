@@ -11,7 +11,7 @@ import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 
-class TrainingStartFragment : Fragment() {
+class TrainingFragment_2_start : Fragment() {
 
     private lateinit var timerTextView: TextView
     private lateinit var currentExerciseTextView: TextView
@@ -22,7 +22,7 @@ class TrainingStartFragment : Fragment() {
     private lateinit var nextButton: ImageButton
     private lateinit var progressBar: ProgressBar
     private var isPaused = false
-    private var timeRemaining: Long = 40000
+    private var timeRemaining: Long = 30000
     private var currentExerciseIndex = 0
     private var totalExercises = 0
     private lateinit var exerciseTitles : List<String>
@@ -37,7 +37,7 @@ class TrainingStartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_training_start, container, false)
+        val view = inflater.inflate(R.layout.fragment_training_2_start, container, false)
 
         timerTextView = view.findViewById(R.id.timerTextView)
         currentExerciseTextView = view.findViewById(R.id.currentExerciseTextView)
@@ -95,22 +95,26 @@ class TrainingStartFragment : Fragment() {
         //gif anzeige
 
         exerciseGifs = arrayOf(
-            R.drawable.burpee,
-            R.drawable.crunch,
-            R.drawable.hipthrust,
-            R.drawable.high_knee,
             R.drawable.push,
-            R.drawable.lunge_jump,
-            R.drawable.standing_sprint,
-            R.drawable.s2s_squat,
-            R.drawable.kleinerts,
-            R.drawable.low_walk,
-            R.drawable.swimmer,
-            R.drawable.push,
-            R.drawable.toes,
+            R.drawable.plank,
             R.drawable.squats,
-            R.drawable.s2s_squat,
-            R.drawable.kleinerts
+            R.drawable.lunge_jump,
+            R.drawable.dips,
+            R.drawable.swimmer,
+            R.drawable.bicycle_crunch,
+            R.drawable.bridge,
+            R.drawable.wall_sit,
+            R.drawable.calf_raise,
+            R.drawable.push,
+            R.drawable.plank,
+            R.drawable.squats,
+            R.drawable.lunge_jump,
+            R.drawable.dips,
+            R.drawable.swimmer,
+            R.drawable.bicycle_crunch,
+            R.drawable.bridge,
+            R.drawable.wall_sit,
+            R.drawable.calf_raise
         )
 
         updateExerciseGif()
@@ -145,7 +149,7 @@ class TrainingStartFragment : Fragment() {
 
     private fun navigateToPauseFragment() {
         if (currentExerciseIndex < exerciseTitles.size - 1) {
-            val trainingBreakFragment = TrainingBreakFragment()
+            val trainingBreakFragment = TrainingFragment_2_break()
             val args = Bundle()
             args.putStringArrayList("exerciseTitles", ArrayList(exerciseTitles))
             args.putInt("currentExerciseIndex", currentExerciseIndex)
@@ -164,7 +168,7 @@ class TrainingStartFragment : Fragment() {
 
     private fun navigateToResultFragment() {
         if (isAdded) {
-            val resultFragment = ResultFragment()
+            val resultFragment = TrainingFragment_2_result()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragment_container_trainings, resultFragment)
             transaction.addToBackStack(null)

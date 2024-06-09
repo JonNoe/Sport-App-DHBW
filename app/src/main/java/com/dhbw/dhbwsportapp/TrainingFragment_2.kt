@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.navigation.fragment.findNavController
 
-class Training1Fragment : Fragment(), OnItemClickListener {
-    private lateinit var recyclerViewTraining1Fragment: RecyclerView
-    private lateinit var dataList: ArrayList<TrainingDataClass>
+class TrainingFragment_2 : Fragment(), OnItemClickListener {
+    private lateinit var recyclerViewTrainingFragment: RecyclerView
+    private lateinit var dataList: ArrayList<Training_2_DataClass>
     private lateinit var imageList: Array<Int>
     private lateinit var titleList: Array<String>
     private lateinit var startButton: Button
@@ -21,53 +21,61 @@ class Training1Fragment : Fragment(), OnItemClickListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_training1, container, false)
-        recyclerViewTraining1Fragment = view.findViewById(R.id.recycler_view_T1)
-        recyclerViewTraining1Fragment.layoutManager = LinearLayoutManager(requireContext())
+        val view = inflater.inflate(R.layout.fragment_training_2, container, false)
+        recyclerViewTrainingFragment = view.findViewById(R.id.recycler_view_T1)
+        recyclerViewTrainingFragment.layoutManager = LinearLayoutManager(requireContext())
 
         imageList = arrayOf(
-            R.drawable.burpee,
-            R.drawable.crunch,
-            R.drawable.hipthrust,
-            R.drawable.high_knee,
             R.drawable.push,
-            R.drawable.lunge_jump,
-            R.drawable.standing_sprint,
-            R.drawable.s2s_squat,
-            R.drawable.kleinerts,
-            R.drawable.low_walk,
-            R.drawable.swimmer,
-            R.drawable.push,
-            R.drawable.toes,
+            R.drawable.plank,
             R.drawable.squats,
-            R.drawable.s2s_squat,
-            R.drawable.kleinerts,
+            R.drawable.lunge_jump,
+            R.drawable.dips,
+            R.drawable.swimmer,
+            R.drawable.bicycle_crunch,
+            R.drawable.bridge,
+            R.drawable.wall_sit,
+            R.drawable.calf_raise,
+            R.drawable.push,
+            R.drawable.plank,
+            R.drawable.squats,
+            R.drawable.lunge_jump,
+            R.drawable.dips,
+            R.drawable.swimmer,
+            R.drawable.bicycle_crunch,
+            R.drawable.bridge,
+            R.drawable.wall_sit,
+            R.drawable.calf_raise
+            )
 
-        )
         titleList = arrayOf(
-            "Burpees",
-            "Crunches",
-            "Hip-Thrusts",
-            "High-Knee-Jumps",
-            "Speed Push-Ups",
-            "Ausfallsprünge",
-            "Stand Sprint",
-            "Squad & Side Jump",
-            "Mountain Climbers",
-            "Low-Walk",
-            "Superman Swimmers",
-            "Speed Push-Ups",
-            "Toe-Touches",
-            "Speed Squats",
-            "Side Squats",
-            "Mountain Climbers"
+            "Push-Ups",
+            "Planks",
+            "Squats",
+            "Lunges",
+            "Dips an Bank",
+            "Superman",
+            "Bicycle Crunches",
+            "Glute Bridge",
+            "Wall Sit",
+            "Calf Raises",
+            "Push-Ups",
+            "Planks",
+            "Squats",
+            "Lunges",
+            "Dips an Bank",
+            "Superman",
+            "Bicycle Crunches",
+            "Glute Bridge",
+            "Wall Sit",
+            "Calf Raises"
         )
 
         dataList = ArrayList()
         getData()
 
-        val adapter = TrainingAdapterClass(dataList, this)
-        recyclerViewTraining1Fragment.adapter = adapter
+        val adapter = Training_2_AdapterClass(dataList, this)
+        recyclerViewTrainingFragment.adapter = adapter
 
         startButton = view.findViewById(R.id.StartButton)
         startButton.setOnClickListener {
@@ -79,10 +87,10 @@ class Training1Fragment : Fragment(), OnItemClickListener {
 
     private fun getData(){
         for (i in imageList.indices){
-            val dataClass = TrainingDataClass(imageList[i], titleList[i])
+            val dataClass = Training_2_DataClass(imageList[i], titleList[i])
             dataList.add(dataClass)
         }
-        recyclerViewTraining1Fragment.adapter = TrainingAdapterClass(dataList, this)
+        recyclerViewTrainingFragment.adapter = Training_2_AdapterClass(dataList, this)
     }
 
     override fun onItemClick(position: Int){
@@ -90,7 +98,7 @@ class Training1Fragment : Fragment(), OnItemClickListener {
     }
 
     private fun navigateToTrainingStartFragment(startIndex: Int) {
-        val trainingStartFragment = TrainingStartFragment()
+        val trainingStartFragment = TrainingFragment_2_start()
         val args = Bundle()
         args.putStringArrayList("exerciseTitles", ArrayList(titleList.toList()))
         args.putInt("currentExerciseIndex", startIndex)

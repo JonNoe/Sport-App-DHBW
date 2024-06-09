@@ -6,6 +6,8 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat
 
 
 class KreisProgressBarView(context: Context, attrs: AttributeSet) : View(context, attrs) {
@@ -16,7 +18,7 @@ class KreisProgressBarView(context: Context, attrs: AttributeSet) : View(context
         paint.isAntiAlias = true
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = 30f
-        paint.color = Color.RED // Setze die Farbe hier
+        paint.color = ContextCompat.getColor(context, R.color.red_DHBW_app) // Verwende den übergebenen Kontext hier
     }
 
     fun setProgress(progress: Int) {
@@ -28,7 +30,7 @@ class KreisProgressBarView(context: Context, attrs: AttributeSet) : View(context
         super.onDraw(canvas)
         val centerX: Float = width / 2.toFloat()
         val centerY: Float = height / 2.toFloat()
-        val radius: Float = (width.coerceAtMost(height) / 2).toFloat() - 30 // Verkleinere den Radius ein wenig, um Abschneiden zu vermeiden
+        val radius: Float = (width.coerceAtMost(height) / 2).toFloat() - 30
         val startAngle = -90f
         val sweepAngle = (360 * progress / 100).toFloat()
 

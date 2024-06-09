@@ -11,7 +11,7 @@
         android:id="@+id/TitleT1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="HIIT-Workout"
+        android:text="Ganzkörperworkout"
         android:gravity="center"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -27,7 +27,7 @@
         android:id="@+id/Dauer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Geschätze Dauer: 16min"
+        android:text="Geschätze Dauer: 17min"
         android:textSize="18sp"
         app:layout_constraintTop_toBottomOf="@id/TitleT1"
         android:layout_marginTop="5sp"/>

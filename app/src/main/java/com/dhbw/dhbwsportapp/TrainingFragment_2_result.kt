@@ -10,7 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import java.util.concurrent.TimeUnit
 
-class ResultFragment : Fragment() {
+class TrainingFragment_2_result : Fragment() {
 
     private lateinit var totalElapsedTimeTextView: TextView
 
@@ -19,7 +19,7 @@ class ResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_result, container, false)
+        val view = inflater.inflate(R.layout.fragment_training_2_result, container, false)
 
         totalElapsedTimeTextView = view.findViewById(R.id.totalElapsedTimeTextView)
 
