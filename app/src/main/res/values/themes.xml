@@ -25,7 +25,6 @@
     </style>
 
 
-
     <style name="fill1Switch" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">@color/fill1</item>
         <item name="colorSwitchThumbNormal">#FFFFFF</item>

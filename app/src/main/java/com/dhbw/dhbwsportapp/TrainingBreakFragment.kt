@@ -72,7 +72,7 @@ class TrainingBreakFragment : Fragment() {
     }
 
     private fun startTimer(timeInMillis: Long) {
-        countDownTimer = object : CountDownTimer(timeInMillis, 1) {
+        countDownTimer = object : CountDownTimer(timeInMillis, 50) {
             override fun onTick(millisUntilFinished: Long) {
                 timeRemaining = millisUntilFinished
                 val minutes = millisUntilFinished / 60000

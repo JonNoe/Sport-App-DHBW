@@ -36,7 +36,8 @@ class ProfileFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        sharedPreferences = requireContext().getSharedPreferences("ProfilePreferences", Context.MODE_PRIVATE)
+        sharedPreferences =
+            requireContext().getSharedPreferences("ProfilePreferences", Context.MODE_PRIVATE)
 
         val editProfileButton: AppCompatButton = view.findViewById(R.id.Edit_Profile)
         editProfileName = view.findViewById(R.id.Profile_Name)
@@ -128,12 +129,13 @@ class ProfileFragment : Fragment() {
             profileImageBitmap = bitmap
             profileImageButton.setImageBitmap(bitmap)
         }
+
     }
 
     private fun navigateToProfileSettings() {
         val intent = Intent(requireContext(), ProfileActivity::class.java)
         startActivity(intent)
 
-    }
 
+    }
 }
