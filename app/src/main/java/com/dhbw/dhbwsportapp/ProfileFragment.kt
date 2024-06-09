@@ -136,4 +136,5 @@ class ProfileFragment : Fragment() {
         val intent = Intent(requireContext(), ProfileActivity::class.java)
         startActivity(intent)
     }
+
 }
