@@ -132,6 +132,7 @@ class ProfileFragment : Fragment() {
 
     private fun navigateToProfileSettings() {
 
+
     }
 
 }
