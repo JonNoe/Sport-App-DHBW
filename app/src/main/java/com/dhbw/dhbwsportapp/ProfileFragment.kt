@@ -133,7 +133,11 @@ class ProfileFragment : Fragment() {
     private fun navigateToProfileSettings() {
         val profileSettingsFragment = Profile_Settings()
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.Edit_Profile, profileSettingsFragment)
+        // Entferne das aktuelle Fragment, bevor das neue Fragment hinzugefügt wird
+        requireActivity().supportFragmentManager.findFragmentById(R.id.frame_container)?.let {
+            transaction.remove(it)
+        }
+        transaction.replace(R.id.frame_container, profileSettingsFragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
