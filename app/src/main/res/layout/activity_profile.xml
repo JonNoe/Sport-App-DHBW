@@ -71,11 +71,13 @@
         <!-- Button zur Berechnung des BMI -->
 
         <!-- TextView zur Anzeige des BMI -->
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/calculate_bmi_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
+            android:backgroundTint="@color/red_DHBW_app"
+            android:textColor="#FFFFFF"
             android:text="BMI berechnen" />
 
         <TextView

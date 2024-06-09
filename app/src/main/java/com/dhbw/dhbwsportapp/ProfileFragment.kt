@@ -1,5 +1,6 @@
 package com.dhbw.dhbwsportapp
 
+import android.app.AlarmManager
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
@@ -14,10 +15,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import java.io.ByteArrayOutputStream
+import android.app.PendingIntent
+import android.view.LayoutInflater
+import android.widget.CompoundButton
+import androidx.appcompat.widget.SwitchCompat
+import java.util.Calendar
+
 
 class ProfileFragment : Fragment() {
 
@@ -27,7 +33,12 @@ class ProfileFragment : Fragment() {
     private lateinit var profileImageButton: ImageButton
     private lateinit var sharedPreferences: SharedPreferences
     private var profileImageBitmap: Bitmap? = null
+    private lateinit var notificationSwitch: SwitchCompat
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        sharedPreferences = requireContext().getSharedPreferences("notification_preferences", Context.MODE_PRIVATE)
+    }
     override fun onCreateView(
         inflater: android.view.LayoutInflater,
         container: ViewGroup?,
@@ -35,6 +46,22 @@ class ProfileFragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
+        notificationSwitch = view.findViewById(R.id.notificationSwitch)
+
+        val isNotificationsEnabled = sharedPreferences.getBoolean("notifications_enabled", false)
+        notificationSwitch.isChecked = isNotificationsEnabled
+
+        notificationSwitch.setOnCheckedChangeListener { _: CompoundButton, isChecked: Boolean ->
+            val editor = sharedPreferences.edit()
+            editor.putBoolean("notifications_enabled", isChecked)
+            editor.apply()
+
+            if (isChecked) {
+                scheduleNotification()
+            } else {
+                cancelNotification()
+            }
+        }
 
         sharedPreferences =
             requireContext().getSharedPreferences("ProfilePreferences", Context.MODE_PRIVATE)
@@ -137,4 +164,30 @@ class ProfileFragment : Fragment() {
         startActivity(intent)
     }
 
+    private fun scheduleNotification() {
+        val alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(requireActivity(), BroadcastReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(requireActivity(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+
+        val calendar = Calendar.getInstance().apply {
+            set(Calendar.HOUR_OF_DAY, 17)
+            set(Calendar.MINUTE, 30)
+            set(Calendar.SECOND, 0)
+        }
+
+        alarmManager.setRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY,
+            pendingIntent
+        )
+    }
+
+    private fun cancelNotification() {
+        val alarmManager = requireActivity().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val intent = Intent(requireActivity(), BroadcastReceiver::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(requireActivity(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+        alarmManager.cancel(pendingIntent)
+    }
 }
+
