@@ -2,18 +2,22 @@ package com.dhbw.dhbwsportapp
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
-import android.net.Uri
+import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+import android.util.Base64
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
+import androidx.fragment.app.Fragment
+import java.io.ByteArrayOutputStream
 
 class ProfileFragment : Fragment() {
 
@@ -21,22 +25,27 @@ class ProfileFragment : Fragment() {
     private var profileName: String = "Profile Name"
     private val PICK_IMAGE_REQUEST = 1
     private lateinit var profileImageButton: ImageButton
+    private lateinit var sharedPreferences: SharedPreferences
+    private var profileImageBitmap: Bitmap? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: android.view.LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
+        sharedPreferences = requireContext().getSharedPreferences("ProfilePreferences", Context.MODE_PRIVATE)
+
         val editProfileButton: AppCompatButton = view.findViewById(R.id.Edit_Profile)
         editProfileName = view.findViewById(R.id.Profile_Name)
-        editProfileName.text = profileName
+        profileImageButton = view.findViewById(R.id.profile_image_button)
 
-        profileImageButton = view.findViewById(R.id.profile_image_button) // Hier wird profileImageButton initialisiert
+        loadProfileData()
 
         editProfileButton.setOnClickListener {
-            Toast.makeText(activity, "Edit Profile gedrückt", Toast.LENGTH_SHORT).show()
+            navigateToProfileSettings()
         }
 
         editProfileName.setOnClickListener {
@@ -59,9 +68,13 @@ class ProfileFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
-            val selectedImageUri: Uri? = data.data
+            val selectedImageUri = data.data
             selectedImageUri?.let {
-                profileImageButton.setImageURI(it)
+                val inputStream = requireContext().contentResolver.openInputStream(selectedImageUri)
+                val bitmap = BitmapFactory.decodeStream(inputStream)
+                profileImageBitmap = bitmap
+                profileImageButton.setImageBitmap(bitmap)
+                saveProfileImageBitmap(bitmap)
             }
         }
     }
@@ -76,6 +89,7 @@ class ProfileFragment : Fragment() {
                 val newName = editText.text.toString()
                 profileName = newName
                 editProfileName.text = newName
+                saveProfileName(newName)
                 dialog.dismiss()
             }
             .setNegativeButton("Abbrechen") { dialog, _ ->
@@ -84,4 +98,44 @@ class ProfileFragment : Fragment() {
         val dialog = builder.create()
         dialog.show()
     }
+
+    private fun saveProfileName(name: String) {
+        with(sharedPreferences.edit()) {
+            putString("profile_name", name)
+            apply()
+        }
+    }
+
+    private fun saveProfileImageBitmap(bitmap: Bitmap) {
+        val outputStream = ByteArrayOutputStream()
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
+        val imageBytes = outputStream.toByteArray()
+
+        with(sharedPreferences.edit()) {
+            putString("profile_image", Base64.encodeToString(imageBytes, Base64.DEFAULT))
+            apply()
+        }
+    }
+
+    private fun loadProfileData() {
+        profileName = sharedPreferences.getString("profile_name", "Profile Name") ?: "Profile Name"
+        editProfileName.text = profileName
+
+        val profileImageString = sharedPreferences.getString("profile_image", null)
+        profileImageString?.let {
+            val imageBytes = Base64.decode(it, Base64.DEFAULT)
+            val bitmap = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+            profileImageBitmap = bitmap
+            profileImageButton.setImageBitmap(bitmap)
+        }
+    }
+
+    private fun navigateToProfileSettings() {
+        val profileSettingsFragment = Profile_Settings()
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.Edit_Profile, profileSettingsFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
 }

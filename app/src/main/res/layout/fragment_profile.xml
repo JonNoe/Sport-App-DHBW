@@ -7,6 +7,7 @@
     tools:context=".ProfileFragment"
     >
 
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -26,7 +27,7 @@
                 android:scaleType="fitCenter"
                 android:background="@android:color/transparent" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <TextView
                 android:id="@+id/Profile_Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,6 +54,7 @@
                 android:textColor="@color/mainBG"
                 android:paddingEnd="30dp"
                 />
+
             <LinearLayout
                 android:background="@drawable/round_back_white_10_20"
                 android:layout_width="match_parent"
