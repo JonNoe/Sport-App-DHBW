@@ -73,13 +73,6 @@ class TrainingFragment : Fragment(), OnItemClickListener {
         val intent = Intent(requireContext(), TrainingActivity::class.java)
         intent.putExtra("fragment_to_open", fragment.javaClass.simpleName)
         startActivity(intent)
-
-        /*
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.frame_container, fragment)
-            .addToBackStack(null)
-            .commit()
-        */
     }
 
 

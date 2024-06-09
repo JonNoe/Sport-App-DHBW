@@ -131,11 +131,7 @@ class ProfileFragment : Fragment() {
     }
 
     private fun navigateToProfileSettings() {
-        val profileSettingsFragment = Profile_Settings()
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.frame_container, profileSettingsFragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+
     }
 
 }
