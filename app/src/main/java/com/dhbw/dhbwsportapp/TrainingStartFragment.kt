@@ -2,6 +2,7 @@ package com.dhbw.dhbwsportapp
 
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,8 @@ class TrainingStartFragment : Fragment() {
     private var totalExercises = 0
     private lateinit var exerciseTitles : List<String>
     private var isNavigating = false
+    private var isStartTimeSet = false
+    private var trainingStartTime: Long = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,26 +49,30 @@ class TrainingStartFragment : Fragment() {
         currentExerciseIndex = arguments?.getInt("currentExerciseIndex") ?: 0
         totalExercises = exerciseTitles.size
 
+        // Startzeit zum Start des Trainings erfassen
+        if (TrainingManager.trainingStartTime == 0L) {
+            TrainingManager.trainingStartTime = System.currentTimeMillis()
+        }
+        Log.d("TrainingStartFragment", "Trainingsstartzeit: ${TrainingManager.trainingStartTime}")
+        startCountDownTimer(timeRemaining)
+
         updateExerciseCountText()
 
-        if (exerciseTitles.isNotEmpty()){
+        if (exerciseTitles.isNotEmpty()) {
             currentExerciseTextView.text = exerciseTitles[currentExerciseIndex]
         } else {
             currentExerciseTextView.text = "No exercises"
         }
 
-
-        startCountDownTimer(timeRemaining)
-
-        nextButton.setOnClickListener{
+        nextButton.setOnClickListener {
             if (!isNavigating) {
                 isNavigating = true
                 navigateToPauseFragment()
             }
         }
 
-        pauseButton?.setOnClickListener{
-            if (!isPaused){
+        pauseButton?.setOnClickListener {
+            if (!isPaused) {
                 countDownTimer.cancel()
                 isPaused = true
                 pauseButton?.setImageResource(R.drawable.play)
@@ -85,13 +92,14 @@ class TrainingStartFragment : Fragment() {
     }
 
     private fun startCountDownTimer(timeInMillis: Long) {
-        countDownTimer = object : CountDownTimer(timeInMillis,1000) {
+        countDownTimer = object : CountDownTimer(timeInMillis, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 timeRemaining = millisUntilFinished
                 val minutes = millisUntilFinished / 60000
                 val seconds = (millisUntilFinished % 60000) / 1000
                 timerTextView.text = String.format("%02d:%02d", minutes, seconds)
             }
+
             override fun onFinish() {
                 timerTextView.text = "00:00"
                 if (!isNavigating) {
@@ -108,8 +116,7 @@ class TrainingStartFragment : Fragment() {
         countDownTimer.cancel()
     }
 
-    private fun navigateToPauseFragment(){
-
+    private fun navigateToPauseFragment() {
         if (currentExerciseIndex < exerciseTitles.size - 1) {
             val trainingBreakFragment = TrainingBreakFragment()
             val args = Bundle()
@@ -128,7 +135,7 @@ class TrainingStartFragment : Fragment() {
         }
     }
 
-    private fun navigateToResultFragment(){
+    private fun navigateToResultFragment() {
         if (isAdded) {
             val resultFragment = ResultFragment()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -138,8 +145,8 @@ class TrainingStartFragment : Fragment() {
         }
     }
 
-    private fun navigateToPreviousFragment(){
-        if (currentExerciseIndex > 0){
+    private fun navigateToPreviousFragment() {
+        if (currentExerciseIndex > 0) {
             currentExerciseIndex--
             timeRemaining = 40000
             currentExerciseTextView.text = exerciseTitles[currentExerciseIndex]
@@ -148,15 +155,13 @@ class TrainingStartFragment : Fragment() {
     }
 
     private fun updateExerciseCountText() {
-        if (exerciseTitles.isNotEmpty()){
+        if (exerciseTitles.isNotEmpty()) {
             exerciseCountTextView.text = "${currentExerciseIndex + 1}/$totalExercises"
-            val progress = ((currentExerciseIndex+1)/exerciseTitles.size.toFloat())*100
+            val progress = ((currentExerciseIndex + 1) / exerciseTitles.size.toFloat()) * 100
             progressBar.progress = progress.toInt()
-        }
-        else {
+        } else {
             exerciseCountTextView.text = ""
             progressBar.progress = 0
         }
-
     }
 }

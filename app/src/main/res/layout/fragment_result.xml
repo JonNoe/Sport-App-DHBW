@@ -1,15 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
     tools:context=".ResultFragment">
 
+    <!-- Text "Herzlichen Glückwunsch" -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="yay you made it"
+        android:layout_height="wrap_content"
+        android:text="Herzlichen Glückwunsch!\nDu hast das Training abgeschlossen."
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textSize="50sp"
-        android:gravity="center"/>
-</FrameLayout>
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Gesamtzeit -->
+    <TextView
+        android:id="@+id/totalElapsedTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gesamtzeit: 00:00"
+        android:textSize="18sp"
+        android:layout_gravity="center"/>
+
+    <!-- Kalorienverbrauch -->
+    <TextView
+        android:id="@+id/Kalorienverbrauch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Du hast im Durchschnitt 200 kcal verbrannt."
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Bild -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/muskel"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Text "Mach weiter so" -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mach weiter so!"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Zurück zum Hauptmenü Button -->
+    <Button
+        android:id="@+id/backToMainMenuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Zurück zum Hauptmenü"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/red_DHBW_app"/>
+
+</LinearLayout>
