@@ -32,7 +32,7 @@
         android:id="@+id/Kalorienverbrauch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Du hast im Durchschnitt 200 kcal verbrannt."
+        android:text="Du hast im Durchschnitt 8784 cal verbrannt."
         android:textSize="16sp"
         android:gravity="center"
         android:layout_marginTop="16sp"/>

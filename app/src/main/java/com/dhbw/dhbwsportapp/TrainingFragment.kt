@@ -67,6 +67,7 @@ class TrainingFragment : Fragment(), OnItemClickListener {
             0 -> Training1Fragment::class.java.name
             1 -> TrainingFragment_2::class.java.name
             2 -> TrainingFragment_3::class.java.name
+            3 -> TrainingFragment_4::class.java.name
 
         else -> throw IllegalArgumentException("Invalid positioning")
         }
