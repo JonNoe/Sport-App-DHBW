@@ -29,12 +29,12 @@ class TrainingFragment : Fragment(), OnItemClickListener {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         imageList = arrayOf(
-            R.drawable.baseline_co_present_24,
-            R.drawable.ic_home_black_24dp,
-            R.drawable.baseline_community_24,
-            R.drawable.baseline_account_circle_24,
-            R.drawable.ic_launcher_background,
-            R.drawable.ic_launcher_foreground
+            R.drawable.hiit,
+            R.drawable.full_body,
+            R.drawable.bauchmuskel,
+            R.drawable.beinmuskel,
+            R.drawable.full_body,
+            R.drawable.oberkoerper
         )
         titleList = arrayOf(
             "HIIT-Workout",
