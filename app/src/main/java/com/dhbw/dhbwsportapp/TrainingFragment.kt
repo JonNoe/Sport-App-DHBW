@@ -42,7 +42,7 @@ class TrainingFragment : Fragment(), OnItemClickListener {
             "Core-Workout",
             "Unterkörper-Workout",
             "Fortgeschrittenes Ganzkörper-Workout",
-            "Oberkörper-Workout"
+            "Fortgeschrittenes Oberkörper-Workout"
         )
 
 
@@ -68,6 +68,8 @@ class TrainingFragment : Fragment(), OnItemClickListener {
             1 -> TrainingFragment_2::class.java.name
             2 -> TrainingFragment_3::class.java.name
             3 -> TrainingFragment_4::class.java.name
+            4 -> TrainingFragment_5::class.java.name
+            5 -> TrainingFragment_6::class.java.name
 
         else -> throw IllegalArgumentException("Invalid positioning")
         }

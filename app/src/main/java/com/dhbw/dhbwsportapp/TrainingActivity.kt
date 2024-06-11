@@ -18,6 +18,8 @@ class TrainingActivity : AppCompatActivity() {
             TrainingFragment_2::class.java.name -> TrainingFragment_2()
             TrainingFragment_3::class.java.name -> TrainingFragment_3()
             TrainingFragment_4::class.java.name -> TrainingFragment_4()
+            TrainingFragment_5::class.java.name -> TrainingFragment_5()
+            TrainingFragment_6::class.java.name -> TrainingFragment_6()
             else -> throw  IllegalArgumentException("Invalid fragment class name")
         }
 
