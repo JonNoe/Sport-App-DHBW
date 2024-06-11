@@ -47,13 +47,11 @@ class ProfileActivity : AppCompatActivity() {
         val calculateBmiButton: Button = findViewById(R.id.calculate_bmi_button)
         val bmiResult: TextView = findViewById(R.id.bmi_result)
 
-        // Load saved data and update views
         loadData("birthday")?.let { birthdayView.text = it }
         loadData("weight")?.let { weightView.text = it }
         loadData("height")?.let { heightView.text = it }
         loadData("target_weight")?.let { targetWeightView.text = it }
 
-        // Setup gender spinner
         ArrayAdapter.createFromResource(
             this,
             R.array.gender_array,
@@ -76,9 +74,9 @@ class ProfileActivity : AppCompatActivity() {
             datePickerDialog.setOnDateSetListener { _, year, month, dayOfMonth ->
                 val selectedDate = Calendar.getInstance()
                 selectedDate.set(year, month, dayOfMonth)
-                val formattedDate = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(selectedDate.time)
+                val formattedDate = SimpleDateFormat("dd.MM.yyyy", Locale.getDefault()).format(selectedDate.time)
                 saveData("birthday", formattedDate)
-                birthdayView.text = formattedDate // Update the TextView
+                birthdayView.text = formattedDate
             }
             datePickerDialog.show()
         }
@@ -93,7 +91,7 @@ class ProfileActivity : AppCompatActivity() {
                     val weight = editText.text.toString().toDoubleOrNull()
                     if (weight != null) {
                         saveData("weight", weight.toString())
-                        weightView.text = weight.toString() // Update the TextView
+                        weightView.text = weight.toString()
                     }
                     dialog.dismiss()
                 }
@@ -114,7 +112,7 @@ class ProfileActivity : AppCompatActivity() {
                     val height = editText.text.toString().toDoubleOrNull()
                     if (height != null) {
                         saveData("height", height.toString())
-                        heightView.text = height.toString() // Update the TextView
+                        heightView.text = height.toString()
                     }
                     dialog.dismiss()
                 }
@@ -153,7 +151,7 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Do nothing
+
             }
         }
 
