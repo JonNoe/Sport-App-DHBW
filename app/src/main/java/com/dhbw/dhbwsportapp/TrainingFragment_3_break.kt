@@ -124,6 +124,7 @@ class TrainingFragment_3_break : Fragment() {
             transaction.replace(R.id.fragment_container_trainings, trainingStartFragment)
             transaction.addToBackStack(null)
             transaction.commit()
+
         }
     }
 
