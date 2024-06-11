@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
     implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.28")
+    implementation ("androidx.core:core-splashscreen:1.0.1")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

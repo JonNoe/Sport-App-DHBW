@@ -38,11 +38,11 @@ class TrainingFragment : Fragment(), OnItemClickListener {
         )
         titleList = arrayOf(
             "HIIT-Workout",
-            "Ganzkörperworkout",
-            "Dehnungen für die Pause",
-            "Ganzkörperworkout",
-            "Spagat-Übungen",
-            "Arm-Übungen"
+            "Ganzkörper-Krafttraining",
+            "Core-Workout",
+            "Unterkörper-Workout",
+            "Fortgeschrittenes Ganzkörper-Workout",
+            "Oberkörper-Workout"
         )
 
 
@@ -66,6 +66,7 @@ class TrainingFragment : Fragment(), OnItemClickListener {
         val fragmentClassName: String = when (position){
             0 -> Training1Fragment::class.java.name
             1 -> TrainingFragment_2::class.java.name
+            2 -> TrainingFragment_3::class.java.name
 
         else -> throw IllegalArgumentException("Invalid positioning")
         }

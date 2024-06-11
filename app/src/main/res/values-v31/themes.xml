@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.DHBWSportApp.SplashScreen" parent="Theme.DHBWSportApp">
+        <item name="android:windowSplashScreenBackground">@color/mainBG</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/dhbw_gross</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+
+    </style>
+</resources>

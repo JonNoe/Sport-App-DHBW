@@ -16,6 +16,7 @@ class TrainingActivity : AppCompatActivity() {
         val fragment: Fragment = when (fragmentToOpen) {
             Training1Fragment::class.java.name -> Training1Fragment()
             TrainingFragment_2::class.java.name -> TrainingFragment_2()
+            TrainingFragment_3::class.java.name -> TrainingFragment_3()
             else -> throw  IllegalArgumentException("Invalid fragment class name")
         }
 

@@ -10,6 +10,13 @@
 
     <style name="Theme.DHBWSportApp" parent="Base.Theme.DHBWSportApp" />
 
+    <style name="Theme.DHBWSportApp.SplashScreen" parent="Theme.DHBWSportApp">
+        <item name="android:windowSplashScreenBackground">@color/mainBG</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/dhbw_gross</item>
+        <item name="windowSplashScreenAnimationDuration">200</item>
+
+    </style>
+
 
     <!--Switch Styles-->
     <style name="nightModeSwitch" parent="Theme.AppCompat.Light">
